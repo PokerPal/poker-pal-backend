@@ -1,5 +1,7 @@
 # PokerPal Backend
 
+![Backend](https://github.com/PokerPal/PokerPal/workflows/Backend/badge.svg)
+
 This repository contains code for the backend of the PokerPal application. The backend is an ASP.NET 
 Core app written in C#.
 
