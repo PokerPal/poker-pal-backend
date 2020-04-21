@@ -19,21 +19,17 @@ You also might want to install one of:
 
 ### Building
 
-You have several options:
+You have a couple of options:
 
-- Run `dotnet build` from the root of the repository.
 - Open the solution in Rider or Visual Studio and run the build action.
-- If you have `make` installed (most Unix-based systems will by default), run `make` from the top 
-  level of the repository.
+- Run `dotnet build` from the root of the repository.
 
 ### Running
 
 Again, several options:
 
 - Run one of the two launch profiles from within Rider or Visual Studio
-- With `make`, run `make inmemory` to run the backend only with an in-memory database; this is what 
-  you want for development most of the time.
-- With `make`, run `make postgresql` to run the backend only with a PostgreSQL database.
-- Manually run `dotnet run --launch-profile "Local API/In Memory Database"`
+- Manually run `dotnet run --launch-profile "Local API/In Memory Database"`; this is what you want 
+  for development most of the time rather than the PostgreSQL configuration.
 - Manually run `dotnet run --launch-profile "Local API/PostgreSQL"`
 
