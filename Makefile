@@ -2,21 +2,19 @@ default: build
 
 # Build rules
 
-build: backend
-
-backend:
-	dotnet build backend/PokerPal.sln
+build:
+	dotnet build PokerPal.sln
 
 clean:
-	dotnet clean backend/PokerPal.sln
+	dotnet clean PokerPal.sln
 
 # Run rules
 
-inmemory: backend
-	dotnet run -p backend/Api/Api.csproj --launch-profile "Local API/In Memory Database"
+inmemory: build
+	dotnet run -p Api/Api.csproj --launch-profile "Local API/In Memory Database"
 
-postgresql: backend
-	dotnet run -p backend/Api/Api.csproj --launch-profile "Local API/PostgreSQL"
+postgresql: build
+	dotnet run -p Api/Api.csproj --launch-profile "Local API/PostgreSQL"
 
-.PHONY: backend inmemory postgresql
+.PHONY: build clean inmemory postgresql
 
