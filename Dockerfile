@@ -14,4 +14,4 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS run
 WORKDIR /app
 COPY --from=build /app/out ./
 
-CMD ASPNETCORE_URLS="https://0.0.0.0:$PORT" dotnet Api.dll
+CMD ASPNETCORE_URLS="http://0.0.0.0:$PORT" dotnet Api.dll
