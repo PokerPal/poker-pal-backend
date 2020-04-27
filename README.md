@@ -30,8 +30,8 @@ You have a couple of options:
 
 Again, several options:
 
-- Run one of the two launch profiles from within Rider or Visual Studio
-- Manually run `dotnet run --launch-profile "Local API/In Memory Database"`; this is what you want 
-  for development most of the time rather than the PostgreSQL configuration.
-- Manually run `dotnet run --launch-profile "Local API/PostgreSQL"`
+- Run one of the two launch profiles from within Rider or Visual Studio; most of the time for 
+  development you'll want the Development profile.
+- Manually run `dotnet run --launch-profile "Development"`
+- Manually run `dotnet run --launch-profile "Staging"`
 
