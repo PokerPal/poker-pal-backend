@@ -74,15 +74,15 @@ namespace Api
                         options.UseInMemoryDatabase("example_in_memory_database");
                     }
                     else if (string.IsNullOrWhiteSpace(
-                        this.Configuration["DATABASE_CONNECTION_STRING"]))
+                        this.Configuration["DATABASE_URL"]))
                     {
                         throw new ArgumentException(
-                            "USE_IN_MEMORY_DATABASE was not set and no DATABASE_CONNECTION_STRING was provided.");
+                            "USE_IN_MEMORY_DATABASE was not set and no DATABASE_URL was provided.");
                     }
                     else
                     {
                         options.UseConnectionString(
-                            this.Configuration["DATABASE_CONNECTION_STRING"]);
+                            this.Configuration["DATABASE_URL"]);
                     }
                 });
         }
