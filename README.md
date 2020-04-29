@@ -35,3 +35,19 @@ Again, several options:
 - Manually run `dotnet run --launch-profile "Development"`
 - Manually run `dotnet run --launch-profile "Staging"`
 
+### Migrations
+
+To check previously applied migrations for the production database:
+
+```bash
+dotnet run --project Migrations/Migrations.csproj -- check \
+  "$(heroku config:get DATABASE_URL -a poker-pal-backend)?ssl=require"
+```
+
+To apply any pending migrations:
+
+```bash
+dotnet run --project Migrations/Migrations.csproj -- migrate \
+  "$(heroku config:get DATABASE_URL -a poker-pal-backend)?ssl=require"
+```
+
