@@ -104,7 +104,7 @@ namespace Api
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
-                .WithOrigins("http://localhost:3000"));
+                .WithOrigins("http://localhost:3000", "http://poker-pal-frontend.herokuapp.com"));
 
             app.UseRouting();
 
