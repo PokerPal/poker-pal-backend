@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -27,7 +28,9 @@ namespace Api
                     logging.AddConsole(options => options.IncludeScopes = true);
                     logging.AddDebug();
                 })
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
+                .ConfigureAppConfiguration((_, b) =>
+                    b.AddJsonFile("secrets.json", true));
         }
     }
 }
