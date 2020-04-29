@@ -9,7 +9,6 @@
       "documentPrivateElements": false,
       "documentPrivateFields": false
     },
-
     "orderingRules": {
       "blankLinesBetweenUsingGroups": "require",
       "systemUsingDirectivesFirst": true,

@@ -37,15 +37,8 @@ namespace Persistence
 
                 var builder = new DbContextOptionsBuilder()
                     .UseNpgsql(
-                        connectionString);
-
-                // TODO: Once migrations have been set up, use these options.
-                /*
-                var builder = new DbContextOptionsBuilder()
-                    .UseNpgsql(
                         connectionString,
-                        pgOptions => { pgOptions.MigrationsAssembly("Persistence.Migrations"); });
-                */
+                        pgOptions => { pgOptions.MigrationsAssembly("Migrations"); });
 
                 this.contextOptions = builder.Options;
             }
@@ -63,7 +56,7 @@ namespace Persistence
             var userInfo = databaseUri.UserInfo.Split(':');
 
             var queryString = HttpUtility.ParseQueryString(databaseUri.Query);
-            var isSsl = queryString["ssl"] == "true";
+            var sslQuery = queryString["ssl"];
 
             return new NpgsqlConnectionStringBuilder
             {
@@ -72,7 +65,16 @@ namespace Persistence
                 Username = userInfo[0],
                 Password = userInfo[1],
                 Database = databaseUri.LocalPath.TrimStart('/'),
-                SslMode = isSsl ? SslMode.Prefer : 0,
+                SslMode = sslQuery switch
+                {
+                    "require" => SslMode.Require,
+                    "true" => SslMode.Prefer,
+                    _ => SslMode.Disable,
+                },
+
+                // This is needed in order to connect to an AWS database, such as the one provided
+                // by Heroku.
+                TrustServerCertificate = sslQuery == "require",
             }.ToString();
         }
     }
