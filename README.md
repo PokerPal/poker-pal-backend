@@ -19,6 +19,29 @@ You also might want to install one of:
 - [JetBrains Rider](https://www.jetbrains.com/rider/) (recommended)
 - [Visual Studio](https://visualstudio.microsoft.com/)
 
+### Environment Variables
+
+Non-sensitive environment variables are set in `Api/Properties/launchSettings.json`.
+
+To set sensitive environment variables for development, such as database connection strings or API 
+keys, create a file `Api/secrets.json` containing the keys and values, in the following format 
+(replace angle bracketed placeholders with real values).
+
+```json
+{
+  "DATABASE_URL": "<connection string>"
+}
+```
+
+> `DATABASE_URL` may not be needed, e.g. if running in development configuration (in which case 
+> `USE_IN_MEMORY_DATABASE` is set to `TRUE` in `Api/Properties/launchSettings.json`).
+
+This file will be automatically read by the API project on startup.
+
+**Important**: Make sure nothing is changed that causes this file to be checked in to version 
+control. It is ignored in `.gitignore`, but if it's renamed or moved, or `.gitignore` is modified, 
+that may no longer be true.
+
 ### Building
 
 You have a couple of options:
